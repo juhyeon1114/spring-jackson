@@ -10,6 +10,9 @@ import study.springjackson.dummy.object.JsonAliasDummy;
 import study.springjackson.dummy.object.JsonAnyGetterDummy;
 import study.springjackson.dummy.object.JsonAnySetterDummy;
 import study.springjackson.dummy.object.JsonGetterDummy;
+import study.springjackson.dummy.object.JsonIgnoreDummy;
+import study.springjackson.dummy.object.JsonIgnorePropertiesDummy;
+import study.springjackson.dummy.object.JsonIgnoreTypeDummy;
 import study.springjackson.dummy.object.JsonPropertyOrderDummy;
 import study.springjackson.dummy.object.JsonRawValueDummy;
 import study.springjackson.dummy.object.JsonRootNameDummy;
@@ -80,6 +83,21 @@ public class DummyController {
                 .readValue(json);
     }
 
+    @GetMapping("/JsonIgnorePropertiesDummy")
+    public JsonIgnorePropertiesDummy JsonIgnorePropertiesDummy() {
+        return new JsonIgnorePropertiesDummy();
+    }
+
+    @GetMapping("/JsonIgnoreDummy")
+    public JsonIgnoreDummy JsonIgnoreDummy() {
+        return new JsonIgnoreDummy();
+    }
+
+    @GetMapping("/JsonIgnoreTypeDummy")
+    public JsonIgnoreTypeDummy JsonIgnoreTypeDummy() {
+        return new JsonIgnoreTypeDummy();
+    }
+
     /**
      * todo
      *
@@ -88,9 +106,6 @@ public class DummyController {
      * JsonCreator
      * JsonDeserialize
      *
-     * JsonIgnoreProperties
-     * JsonIgnore
-     * JsonIgnoreType
      * JsonInclude
      * JsonIncludeProperties
      * JsonAutoDetect
