@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import study.springjackson.dummy.object.JsonIncludeDummy;
 import study.springjackson.dummy.object.set.JsonAliasDummy;
 import study.springjackson.dummy.object.get.JsonAnyGetterDummy;
 import study.springjackson.dummy.object.set.JsonAnySetterDummy;
@@ -96,6 +97,11 @@ public class DummyController {
     @GetMapping("/JsonIgnoreTypeDummy")
     public JsonIgnoreTypeDummy JsonIgnoreTypeDummy() {
         return new JsonIgnoreTypeDummy();
+    }
+
+    @GetMapping("/JsonIncludeDummy")
+    public JsonIncludeDummy JsonIncludeDummy() {
+        return new JsonIncludeDummy("value1", null, " ");
     }
 
     /**
