@@ -6,6 +6,6 @@ import java.util.Map;
 public class JsonAnyGetterDummy {
 
     @JsonAnyGetter
-    private Map<String, String> field = Map.of("key1", "value1", "key2", "value2");
+    public Map<String, String> field = Map.of("key1", "value1", "key2", "value2");
 
 }
