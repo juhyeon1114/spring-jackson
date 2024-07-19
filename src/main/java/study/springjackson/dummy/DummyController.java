@@ -6,17 +6,17 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import study.springjackson.dummy.object.JsonAliasDummy;
-import study.springjackson.dummy.object.JsonAnyGetterDummy;
-import study.springjackson.dummy.object.JsonAnySetterDummy;
-import study.springjackson.dummy.object.JsonGetterDummy;
-import study.springjackson.dummy.object.JsonIgnoreDummy;
-import study.springjackson.dummy.object.JsonIgnorePropertiesDummy;
-import study.springjackson.dummy.object.JsonIgnoreTypeDummy;
-import study.springjackson.dummy.object.JsonPropertyOrderDummy;
-import study.springjackson.dummy.object.JsonRawValueDummy;
-import study.springjackson.dummy.object.JsonRootNameDummy;
-import study.springjackson.dummy.object.JsonSetterDummy;
+import study.springjackson.dummy.object.set.JsonAliasDummy;
+import study.springjackson.dummy.object.get.JsonAnyGetterDummy;
+import study.springjackson.dummy.object.set.JsonAnySetterDummy;
+import study.springjackson.dummy.object.get.JsonGetterDummy;
+import study.springjackson.dummy.object.ignore.JsonIgnoreDummy;
+import study.springjackson.dummy.object.ignore.JsonIgnorePropertiesDummy;
+import study.springjackson.dummy.object.ignore.JsonIgnoreTypeDummy;
+import study.springjackson.dummy.object.get.JsonPropertyOrderDummy;
+import study.springjackson.dummy.object.get.JsonRawValueDummy;
+import study.springjackson.dummy.object.get.JsonRootNameDummy;
+import study.springjackson.dummy.object.set.JsonSetterDummy;
 import study.springjackson.dummy.object.JsonValueDummy;
 
 @RestController
@@ -106,14 +106,17 @@ public class DummyController {
      * JsonCreator
      * JsonDeserialize
      *
+     * -- include
      * JsonInclude
      * JsonIncludeProperties
      * JsonAutoDetect
      *
+     * -- meta
      * JsonTypeInfo
      * JsonSubTypes
      * JsonTypeName
      *
+     * -- other
      * JsonProperty
      * JsonFormat
      * JsonUnwrapped

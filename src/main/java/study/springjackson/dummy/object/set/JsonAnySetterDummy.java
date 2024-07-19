@@ -1,4 +1,4 @@
-package study.springjackson.dummy.object;
+package study.springjackson.dummy.object.set;
 
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package study.springjackson.dummy.object;
+package study.springjackson.dummy.object.ignore;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
