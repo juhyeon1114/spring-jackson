@@ -1,12 +1,17 @@
 package study.springjackson.dummy;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import study.springjackson.dummy.object.JsonIncludeDummy;
+import study.springjackson.dummy.object.include.JsonIncludeDummy;
+import study.springjackson.dummy.object.include.JsonIncludePropertiesDummy;
+import study.springjackson.dummy.object.meta.JsonTypeInfoDummy;
+import study.springjackson.dummy.object.serialize.JsonCreatorDummy;
+import study.springjackson.dummy.object.serialize.JsonSerializeDummy;
 import study.springjackson.dummy.object.set.JsonAliasDummy;
 import study.springjackson.dummy.object.get.JsonAnyGetterDummy;
 import study.springjackson.dummy.object.set.JsonAnySetterDummy;
@@ -104,24 +109,42 @@ public class DummyController {
         return new JsonIncludeDummy("value1", null, " ");
     }
 
+    @GetMapping("/JsonIncludePropertiesDummy")
+    public JsonIncludePropertiesDummy JsonIncludePropertiesDummy() {
+        return new JsonIncludePropertiesDummy("value1", null, " ");
+    }
+
+    @GetMapping("/JsonTypeInfoDummy")
+    public JsonTypeInfoDummy JsonTypeInfoDummy() {
+        return new JsonTypeInfoDummy();
+    }
+
+    @GetMapping("/JsonSerializeDummy")
+    public JsonSerializeDummy JsonSerializeDummy() {
+        return new JsonSerializeDummy("Title1", "Title2");
+    }
+
+    @GetMapping("/JsonDeserializerDummy")
+    public String JsonDeserializerDummy() throws JsonProcessingException {
+        String json = "{\"title1\":\"    Title1          \", \"title2\":\"    Title2          \"}";
+
+        JsonSerializeDummy dummy = new ObjectMapper()
+                .readerFor(JsonSerializeDummy.class)
+                .readValue(json);
+        return dummy.getTitle1() + "," + dummy.getTitle2();
+    }
+
+    @GetMapping("/JsonCreatorDummy")
+    public String JsonCreatorDummy() throws JsonProcessingException {
+        String json = "{\"t\":\"제목이요\",\"c\":\"내용이요\"}";
+        JsonCreatorDummy dummy = new ObjectMapper()
+                .readerFor(JsonCreatorDummy.class)
+                .readValue(json);
+
+        return dummy.getTitle() + " " + dummy.getContent();
+    }
+
     /**
-     * todo
-     *
-     * -- Serialize / Deserialize
-     * JsonSerialize
-     * JsonCreator
-     * JsonDeserialize
-     *
-     * -- include
-     * JsonInclude
-     * JsonIncludeProperties
-     * JsonAutoDetect
-     *
-     * -- meta
-     * JsonTypeInfo
-     * JsonSubTypes
-     * JsonTypeName
-     *
      * -- other
      * JsonProperty
      * JsonFormat

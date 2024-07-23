@@ -1,4 +1,4 @@
-package study.springjackson.dummy.object;
+package study.springjackson.dummy.object.include;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
