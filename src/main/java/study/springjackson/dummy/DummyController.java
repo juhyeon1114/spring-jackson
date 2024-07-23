@@ -1,15 +1,21 @@
 package study.springjackson.dummy;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import study.springjackson.dummy.object.get.JsonFormatDummy;
+import study.springjackson.dummy.object.get.JsonPropertyDummy;
+import study.springjackson.dummy.object.get.JsonUnwrappedDummy;
 import study.springjackson.dummy.object.include.JsonIncludeDummy;
 import study.springjackson.dummy.object.include.JsonIncludePropertiesDummy;
 import study.springjackson.dummy.object.meta.JsonTypeInfoDummy;
+import study.springjackson.dummy.object.ref.Child;
+import study.springjackson.dummy.object.ref.Parent;
+import study.springjackson.dummy.object.ref.UnmanagedChild;
+import study.springjackson.dummy.object.ref.UnmanagedParent;
 import study.springjackson.dummy.object.serialize.JsonCreatorDummy;
 import study.springjackson.dummy.object.serialize.JsonSerializeDummy;
 import study.springjackson.dummy.object.set.JsonAliasDummy;
@@ -39,6 +45,11 @@ public class DummyController {
         return new JsonGetterDummy();
     }
 
+    @GetMapping("/JsonPropertyDummy")
+    public JsonPropertyDummy JsonPropertyDummy() {
+        return new JsonPropertyDummy();
+    }
+
     @GetMapping("/JsonPropertyOrderDummy")
     public JsonPropertyOrderDummy JsonPropertyOrderDummy() {
         return new JsonPropertyOrderDummy();
@@ -55,11 +66,21 @@ public class DummyController {
         return new JsonValueDummy();
     }
 
+    @GetMapping("/JsonFormatDummy")
+    public JsonFormatDummy JsonFormatDummy() {
+        return new JsonFormatDummy();
+    }
+
     @GetMapping("/JsonRootNameDummy")
     public String JsonRootNameDummy() throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         mapper.enable(SerializationFeature.WRAP_ROOT_VALUE);
         return mapper.writeValueAsString(new JsonRootNameDummy());
+    }
+
+    @GetMapping("/JsonUnwrappedDummy")
+    public JsonUnwrappedDummy JsonUnwrappedDummy() {
+        return new JsonUnwrappedDummy();
     }
 
     @GetMapping("/JsonAnySetterDummy")
@@ -144,16 +165,20 @@ public class DummyController {
         return dummy.getTitle() + " " + dummy.getContent();
     }
 
-    /**
-     * -- other
-     * JsonProperty
-     * JsonFormat
-     * JsonUnwrapped
-     * JsonView
-     * JsonManagedReference
-     * JsonBackReference
-     * JsonIdentityInfo
-     * JsonFilter
-     */
+    @GetMapping("/Reference/managed")
+    public Parent managed() {
+        Parent parent = new Parent("parent1");
+        parent.addChild(new Child("child1"));
+        parent.addChild(new Child("child2"));
+        return parent;
+    }
+
+    @GetMapping("/Reference/unmanaged")
+    public UnmanagedParent unmanaged() {
+        UnmanagedParent parent = new UnmanagedParent("parent1");
+        parent.addChild(new UnmanagedChild("child1"));
+        parent.addChild(new UnmanagedChild("child2"));
+        return parent;
+    }
 
 }
