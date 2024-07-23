@@ -18,6 +18,7 @@ import study.springjackson.dummy.object.ref.UnmanagedChild;
 import study.springjackson.dummy.object.ref.UnmanagedParent;
 import study.springjackson.dummy.object.serialize.JsonCreatorDummy;
 import study.springjackson.dummy.object.serialize.JsonSerializeDummy;
+import study.springjackson.dummy.object.serialize.JsonValueDummy;
 import study.springjackson.dummy.object.set.JsonAliasDummy;
 import study.springjackson.dummy.object.get.JsonAnyGetterDummy;
 import study.springjackson.dummy.object.set.JsonAnySetterDummy;
@@ -29,7 +30,6 @@ import study.springjackson.dummy.object.get.JsonPropertyOrderDummy;
 import study.springjackson.dummy.object.get.JsonRawValueDummy;
 import study.springjackson.dummy.object.get.JsonRootNameDummy;
 import study.springjackson.dummy.object.set.JsonSetterDummy;
-import study.springjackson.dummy.object.JsonValueDummy;
 
 @RestController
 @RequestMapping("/dummy")
@@ -62,7 +62,6 @@ public class DummyController {
 
     @GetMapping("/JsonValueDummy")
     public JsonValueDummy JsonValueDummy() {
-        // todo
         return new JsonValueDummy();
     }
 
